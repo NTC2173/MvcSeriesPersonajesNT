@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MvcSeriesPersonajesNT.Models.Serie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Series TOP</h1>
+
+<p>
+    <a asp-controller="Series" asp-action="Create" class="btn btn-outline-info">Crear nueva serie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSerie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anyo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img src="@item.Imagen" width="200px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anyo)
+            </td>
+            <td>
+               <a asp-controller="Series" asp-action="Detalles" asp-route-id="@item.IdSerie"
+                   class="btn btn-outline-info"> Detalles</a>
+
+               <a asp-controller="Series" asp-action="Personajes" asp-route-id="@item.IdSerie"
+                class="btn btn-outline-success"> Personajes</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

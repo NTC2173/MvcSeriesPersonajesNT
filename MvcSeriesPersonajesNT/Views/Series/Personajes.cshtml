@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcSeriesPersonajesNT.Models.Personaje>
+
+@{
+    ViewData["Title"] = "Personajes";
+}
+
+<h1>Personajes principales</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPersonaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSerie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPersonaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                    <img src="@item.Imagen" width="200px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSerie)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Index">Volver a la lista</a>
